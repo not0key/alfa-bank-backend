@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# FastAPI specific
+instance/
+*.db
+*.sqlite3
+
+# Pytest cache
+.pytest_cache/
+.coverage
+
+# Testing results
+htmlcov/
+.tox/
+nox/
+.cache/
+coverage.xml
+*.cover
+
+# Virtual environment
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Logs and debug files
+*.log
+*.pid
+*.out
+*.err
+
+# Local environment settings
+.env
+.env.*
+.venv
+.idea/
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*.swn
+*.orig
+
+# Docker
+docker-compose*.yml
+Dockerfile
+.dockerignore
+docker-compose.override.yml
+
+# OS generated files
+.DS_Store
+Thumbs.db
