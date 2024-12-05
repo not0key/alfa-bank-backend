@@ -13,10 +13,10 @@ async def upload_file(file: UploadFile):
     # Обрабатываем файл
     try:
         result = await process_uploaded_file(file)
-        for string in result:
-            doc.add_paragraph(string)
-
-        doc.save("test_output.docx")
+        # for string in result:
+        #     doc.add_paragraph(string)
+        #
+        # doc.save("test_output.docx")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing file: {e}")
 

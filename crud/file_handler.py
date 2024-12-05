@@ -22,7 +22,8 @@ async def process_uploaded_file(file) -> list:
         # Парсим содержимое файла
         start_section = "ФУНКЦИЯ ОТСЛЕЖИВАНИЯ ИЗМЕНЕНИЙ POSTING"
         end_section = "ПРИЛОЖЕНИЯ"
-        extracted_text = extract_sections_from_docx(temp_file_path, start_section, end_section)
+        sections = ["ФУНКЦИЯ ОТСЛЕЖИВАНИЯ ИЗМЕНЕНИЙ POSTING", "P/V модуль XYZAR01R"]
+        extracted_text = extract_sections_from_docx(temp_file_path, start_section, end_section, sections)
     finally:
         # Удаляем временный файл
         temp_file_path.unlink()
