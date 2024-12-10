@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 from fastapi import APIRouter
 from pydantic import BaseModel
+=======
+>>>>>>> 882bd0a (master: add file_parser, generative_model)
 from fastapi import APIRouter, File, UploadFile, HTTPException
 from openai import OpenAI
 from pydantic import BaseModel
