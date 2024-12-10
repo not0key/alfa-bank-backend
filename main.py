@@ -1,8 +1,6 @@
 from fastapi import FastAPI, HTTPException
-
-from api.endpoints import file_parser, generative_model
-from pydantic import BaseModel
-from openai import OpenAI
+from api.file_parser import file_parser
+from api.chatgpt import chat
 app = FastAPI()
 
 
@@ -16,7 +14,7 @@ def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
 
 
-app.include_router(file_parser.router, prefix="/api/v1", tags=["File Parsing"])
+app.include_router(file_parser.router, prefix="/file_parsing", tags=["File Parsing"])
 
 class ChatRequest(BaseModel):
     message: str
@@ -45,6 +43,7 @@ async def chat_with_gpt(request: ChatRequest):
     response = generate_response(user_message)
     # Возвращаем ответ
     return {"reply": response}
+app.include_router(chat.router, prefix="/ChatGpt", tags=["ChatGpt"])
 
 # Простой тестовый эндпоинт для проверки работы сервера
 @app.get("/")

@@ -5,7 +5,7 @@ TEMP_DIR = Path("temp")  # Директория для временных фай
 TEMP_DIR.mkdir(exist_ok=True)  # Убедимся, что папка существует
 
 
-async def process_uploaded_file(file) -> list:
+async def process_uploaded_file(file):
     """
     Обрабатывает загруженный файл: сохраняет временно, парсит, удаляет.
 
@@ -20,10 +20,8 @@ async def process_uploaded_file(file) -> list:
 
     try:
         # Парсим содержимое файла
-        start_section = "ФУНКЦИЯ ОТСЛЕЖИВАНИЯ ИЗМЕНЕНИЙ POSTING"
-        end_section = "ПРИЛОЖЕНИЯ"
-        sections = ["ФУНКЦИЯ ОТСЛЕЖИВАНИЯ ИЗМЕНЕНИЙ POSTING", "P/V модуль XYZAR01R"]
-        extracted_text = extract_sections_from_docx(temp_file_path, start_section, end_section, sections)
+        sections = [("Опция XYZ", "P/V модуль"), ("P/V модуль", "Приложения")]
+        extracted_text = extract_sections_from_docx(temp_file_path, sections)
     finally:
         # Удаляем временный файл
         temp_file_path.unlink()
