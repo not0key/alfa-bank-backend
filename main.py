@@ -1,6 +1,7 @@
-from fastapi import FastAPI, HTTPException
-from api.file_parser import file_parser
-from api.chatgpt import chat
+from fastapi import FastAPI
+from api import generative_model, file_parser
+
+
 app = FastAPI()
 
 
@@ -16,34 +17,8 @@ def read_item(item_id: int, q: str = None):
 
 app.include_router(file_parser.router, prefix="/file_parsing", tags=["File Parsing"])
 
-class ChatRequest(BaseModel):
-    message: str
 
-# Функция для генерации ответа с использованием ChatGPT
-def generate_response(prompt: str) -> str:
-    client = OpenAI(
-        api_key="api-key",  # This is the default and can be omitted
-    )
-
-    chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": "Say this is a test",
-            }
-        ],
-        model="gpt-4o-mini",
-    )
-
-@app.post("/chat/")
-async def chat_with_gpt(request: ChatRequest):
-    # Получаем сообщение от пользователя
-    user_message = request.message
-    # Генерируем ответ с использованием ChatGPT
-    response = generate_response(user_message)
-    # Возвращаем ответ
-    return {"reply": response}
-app.include_router(chat.router, prefix="/ChatGpt", tags=["ChatGpt"])
+app.include_router(generative_model.router, prefix="/ChatGpt", tags=["ChatGpt"])
 
 # Простой тестовый эндпоинт для проверки работы сервера
 @app.get("/")

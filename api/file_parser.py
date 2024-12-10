@@ -5,6 +5,8 @@ from spacy.lang.ru import Russian
 
 router = APIRouter()
 doc = Document()
+
+
 @router.post("/upload_file")
 async def upload_file(file: UploadFile):
     # Проверяем формат файла
