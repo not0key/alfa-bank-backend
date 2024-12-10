@@ -17,7 +17,7 @@ async def get_readable_specification(file):
 
     for section in parsed_text.keys():
         parsed_text[section] = "\n".join(parsed_text[section])
-        result.append(await send_message(os.getenv("prompt_readable_specification") + '\n' + parsed_text[section]))
+        result.append(await send_message(os.getenv("prompt_readable_specification") + parsed_text[section]))
 
     return result
 
