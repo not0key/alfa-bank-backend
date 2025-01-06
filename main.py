@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api import generative_model, file_parser
+from api import generative_model, file_parser, readable_specification
 
 
 app = FastAPI()
@@ -14,3 +14,5 @@ app.include_router(generative_model.router, prefix="/ChatGpt", tags=["ChatGpt"])
 def read_root():
     return {"message": "Hello, World!"}
 app.include_router(generative_model.router, prefix="/GenerativeModel", tags=["GenerativeModel"])
+
+app.include_router(readable_specification.router, prefix="/ReadableSpecification", tags=["ReadableSpecification"])
