@@ -1,5 +1,5 @@
 from pathlib import Path
-from utils.file_parsers import extract_sections_from_docx
+from utils.file_utils import extract_sections_from_docx
 
 TEMP_DIR = Path("temp")  # Директория для временных файлов
 TEMP_DIR.mkdir(exist_ok=True)  # Убедимся, что папка существует
