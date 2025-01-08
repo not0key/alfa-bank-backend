@@ -14,3 +14,4 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Базовый класс для моделей
 Base = declarative_base()
+Base.metadata.create_all(bind=engine)
