@@ -32,4 +32,3 @@ async def create_test_cases(file):
         result.append(await send_message(os.getenv("prompt_test_cases") + '\n' + parsed_text[section]))
 
     return result
-

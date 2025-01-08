@@ -22,3 +22,4 @@ async def send_message(request: ChatRequest):
     return await generative_model_utlis.send_message(request.prompt)
 
 
+
