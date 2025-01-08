@@ -6,10 +6,10 @@ router = APIRouter()
 
 
 @router.post("")
-async def create_readable_specification(file: UploadFile):
+async def create_test_cases(file: UploadFile):
     if file.filename.endswith(".docx"):
         try:
-            result = await crud.generative_model.get_readable_specification(file)
+            result = await crud.generative_model.create_test_cases(file)
 
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error processing file: {e}")
@@ -17,4 +17,4 @@ async def create_readable_specification(file: UploadFile):
     else:
         raise HTTPException(status_code=400, detail="Invalid file format. Only .docx files are supported.")
 
-    return {"readable_specification": result}
+    return {"test_cases": result}
