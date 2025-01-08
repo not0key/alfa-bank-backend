@@ -9,10 +9,6 @@ app.include_router(file_parser.router, prefix="/file_parsing", tags=["File Parsi
 
 app.include_router(generative_model.router, prefix="/ChatGpt", tags=["ChatGpt"])
 
-# Простой тестовый эндпоинт для проверки работы сервера
-@app.get("/")
-def read_root():
-    return {"message": "Hello, World!"}
 app.include_router(generative_model.router, prefix="/generativeModel", tags=["GenerativeModel"])
 
 app.include_router(readable_specification.router, prefix="/readableSpecification", tags=["ReadableSpecification"])
