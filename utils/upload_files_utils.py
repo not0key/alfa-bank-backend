@@ -4,8 +4,9 @@ from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 from persistence.Models.upload_file_model import UploadFile as FileModel
 import uuid
+import os
 
-UPLOAD_DIR = Path("static/uploads")
+UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR"))
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 
