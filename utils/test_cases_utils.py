@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from core.Models.test_case_model import TestCase  # Импортируйте вашу модель
+from persistence.Models.test_case_model import TestCase  # Импортируйте вашу модель
 
 
 

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, File, UploadFile, HTTPException,Depends
 import crud.generative_model
 from sqlalchemy.orm import Session
-from core.Models import test_case_model
+from persistence.Models import test_case_model
 from persistence.database import SessionLocal, engine
 
 test_case_model.Base.metadata.create_all(bind=engine)

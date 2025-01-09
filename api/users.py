@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from core.Schemas import user_schema
 from crud import user_security
-from core.Models import user_model
+from persistence.Models import user_model
 from persistence.database import SessionLocal, engine
 import os
 
