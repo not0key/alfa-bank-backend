@@ -1,7 +1,6 @@
 from fastapi import APIRouter, File, UploadFile, HTTPException
 from crud.file_handler import process_uploaded_file
 from docx import Document
-from spacy.lang.ru import Russian
 
 router = APIRouter()
 doc = Document()

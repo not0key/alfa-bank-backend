@@ -8,7 +8,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy.orm import sessionmaker
 from persistence.database import engine
 from utils.upload_files_utils import save_file, save_file_to_db
-from persistence.Models.upload_file_model import UploadFile as FileModel
 from fastapi import APIRouter, File, UploadFile, HTTPException, Depends
 from pathlib import Path
 

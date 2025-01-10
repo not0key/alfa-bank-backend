@@ -1,11 +1,5 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
 from fastapi import APIRouter, File, UploadFile, HTTPException
-from openai import OpenAI
 from pydantic import BaseModel
-import crud.generative_model
-from dotenv import load_dotenv
-import os
 from utils import generative_model_utlis
 
 

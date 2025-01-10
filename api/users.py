@@ -6,6 +6,7 @@ from core.Schemas import user_schema
 from crud import user_security
 from persistence.Models import user_model
 from persistence.database import SessionLocal, engine
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import os
 
 
@@ -61,7 +62,6 @@ def login(user: user_schema.UserLogin, db: Session = Depends(get_db)):
     access_token = create_access_token(data={"sub": db_user.email})
     return {"access_token": access_token, "token_type": "bearer"}
 
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 http_bearer = HTTPBearer()
 

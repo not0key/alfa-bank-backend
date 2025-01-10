@@ -1,5 +1,4 @@
 from docx import Document
-import docx
 
 
 def extract_sections_from_docx(file_path, sections) -> dict:
