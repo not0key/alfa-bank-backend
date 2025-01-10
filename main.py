@@ -13,4 +13,4 @@ app.include_router(generative_model.router, prefix="/generativeModel", tags=["Ge
 app.include_router(readable_specification.router, prefix="/readableSpecification", tags=["ReadableSpecification"])
 app.include_router(test_cases.router, prefix="/testCases", tags=["TestCases"])
 app.include_router(users.router, prefix="/users", tags=["Users"])
-app.include_router(upload_files.router, prefix="/static/uploadFiles", tags=["Upload Files"])
+app.include_router(upload_files.router, prefix="/uploadFiles", tags=["Upload Files"])

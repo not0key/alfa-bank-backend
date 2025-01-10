@@ -1,13 +1,14 @@
 from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
 from sqlalchemy.orm import Session
-from persistence.database import SessionLocal
+from persistence.database import SessionLocal, engine
 from utils.upload_files_utils import save_file, save_file_to_db, get_files_from_db, get_file_response
+from persistence.Models import upload_file_model
 
 router = APIRouter()
+upload_file_model.Base.metadata.create_all(bind=engine)
 
 
 def get_db():
-    """Получает сессию базы данных."""
     db = SessionLocal()
     try:
         yield db
@@ -15,7 +16,7 @@ def get_db():
         db.close()
 
 
-@router.post("/upload/")
+@router.post("")
 async def upload_file(file: UploadFile = File(...), db: Session = Depends(get_db)):
     """Маршрут для загрузки файла."""
     try:
@@ -30,7 +31,7 @@ async def upload_file(file: UploadFile = File(...), db: Session = Depends(get_db
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/files")
+@router.get("")
 def list_files(db: Session = Depends(get_db)):
     """Маршрут для получения списка файлов."""
     return get_files_from_db(db)
