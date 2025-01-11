@@ -33,3 +33,14 @@ async def create_test_cases(file: UploadFile = File(...), db: Session = Depends(
 @router.get("")
 async def get_test_cases(db: Session = Depends(get_db)):
     return db.query(test_case_model.TestCase).all()
+
+
+@router.get("/{test_case_id}")
+async def get_test_case(test_case_id: int, db: Session = Depends(get_db)):
+    # Попытаться получить тест по ID
+    test_case = db.query(test_case_model.TestCase).filter(test_case_model.TestCase.id == test_case_id).first()
+
+    if test_case is None:
+        raise HTTPException(status_code=404, detail="Test case not found")
+
+    return test_case
