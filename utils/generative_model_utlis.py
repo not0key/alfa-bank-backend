@@ -26,8 +26,8 @@ async def send_message(prompt):
         )
 
         print(completion)
-        print(completion.choices[0].message)
-
-        return {"response": completion.choices[0].message}
+        message_content = completion['choices'][0]['message']['content']
+        print(message_content)
+        return message_content
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

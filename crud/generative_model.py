@@ -46,8 +46,11 @@ async def create_test_cases(file: UploadFile, db: Session):
 
     for section in parsed_text.keys():
         parsed_text[section] = "\n".join(parsed_text[section])
-        test_cases.append(section)
-        # result.append(await send_message(os.getenv("prompt_test_cases") + '\n' + parsed_text[section]))
+        #test_cases.append(parsed_text[section])
+        test_case = (await send_message(os.getenv("prompt_test_cases") + '\n' + parsed_text[section]))["response"]["content"]
+        print(test_case)
+        test_cases.append(test_case)
+        break
 
     result = '\n'.join(test_cases)
     test_cases_utils.save_test_case(db, new_file.filename, result, status="Выполнена")

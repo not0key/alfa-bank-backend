@@ -28,3 +28,8 @@ async def create_test_cases(file: UploadFile = File(...), db: Session = Depends(
         raise HTTPException(status_code=400, detail="Invalid file format. Only .docx files are supported.")
 
     return {"test_cases": result}
+
+
+@router.get("")
+async def get_test_cases(db: Session = Depends(get_db)):
+    return db.query(test_case_model.TestCase).all()
