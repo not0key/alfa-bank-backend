@@ -17,6 +17,9 @@ async def process_file(file_path: Path):
         # Парсим содержимое файла
         sections = [("Опция XYZ", "P/V модуль"), ("P/V модуль", "Приложения")]
         extracted_text = extract_sections_from_docx(file_path, sections)
+        print(extracted_text)
+        if len(extracted_text) == 0:
+            raise Exception(f"Неверная структура файла")
     except Exception as e:
         raise Exception(f"Error processing file: {e}")
 
