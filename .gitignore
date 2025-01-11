@@ -80,3 +80,5 @@ dmypy.json
 # OS generated files
 .DS_Store
 Thumbs.db
+
+client1.ovpn

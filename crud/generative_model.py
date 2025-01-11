@@ -28,7 +28,7 @@ async def get_readable_specification(file):
         parsed_text[section] = "\n".join(parsed_text[section])
         readable_specification.append(await send_message(os.getenv("prompt_readable_specification") + '\n' + parsed_text[section]))
 
-    result = '<br>'.join(readable_specification).replace('\n', '<br>')
+    result = '<br/>'.join(readable_specification).replace('\n', '<br/>')
     return result
 
 
@@ -51,6 +51,6 @@ async def create_test_cases(file: UploadFile, db: Session):
         test_case = (await send_message(os.getenv("prompt_test_cases") + '\n' + parsed_text[section]))
         test_cases.append(test_case)
 
-    result = '<br>'.join(test_cases).replace('\n', '<br>')
+    result = '<br/>'.join(test_cases).replace('\n', '<br/>')
     test_cases_utils.save_test_case(db, new_file.filename, result, status="Выполнена")
     return result
