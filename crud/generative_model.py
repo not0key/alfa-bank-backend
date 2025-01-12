@@ -43,6 +43,8 @@ async def create_test_cases(file: UploadFile, db: Session):
 
     # Обработка загруженного файла через путь
     parsed_text = await process_file(file_path)
+    if len(parsed_text) == 0:
+        return f"Неверная структура файла"
     test_cases = []
 
     for section in parsed_text.keys():

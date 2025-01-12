@@ -2,6 +2,10 @@ from pathlib import Path
 from utils.file_parser_utils import extract_sections_from_docx
 
 
+TEMP_DIR = Path("temp")  # Директория для временных файлов
+TEMP_DIR.mkdir(exist_ok=True)  # Убедимся, что папка существует
+
+
 async def process_file(file_path: Path):
     """
     Обрабатывает файл, указанный по пути: парсит его содержимое.
@@ -18,8 +22,6 @@ async def process_file(file_path: Path):
         sections = [("Опция XYZ", "P/V модуль"), ("P/V модуль", "Приложения")]
         extracted_text = extract_sections_from_docx(file_path, sections)
         print(extracted_text)
-        if len(extracted_text) == 0:
-            raise Exception(f"Неверная структура файла")
     except Exception as e:
         raise Exception(f"Error processing file: {e}")
 
